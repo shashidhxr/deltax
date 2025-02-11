@@ -1,7 +1,9 @@
 #include "server.h"
 
 int main(){
-    Server svr(8080);
+    int port = load_config();
+
+    Server svr(port);
     svr.start();
     return 0;
 }

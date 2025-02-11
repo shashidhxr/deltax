@@ -3,6 +3,8 @@
 
 #include "httplib.h"
 
+int load_config();
+
 class Server {
 public:
     Server(int port);
