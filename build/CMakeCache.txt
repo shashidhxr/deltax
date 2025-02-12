@@ -273,6 +273,9 @@ fmt_DIR:PATH=/home/shashidhar/vcpkg/installed/x64-linux/share/fmt
 //The directory containing a CMake configuration file for httplib.
 httplib_DIR:PATH=/home/shashidhar/vcpkg/installed/x64-linux/share/httplib
 
+//The directory containing a CMake configuration file for laserpants_dotenv.
+laserpants_dotenv_DIR:PATH=/usr/local/lib/cmake/laserpants_dotenv
+
 //The directory containing a CMake configuration file for nlohmann_json.
 nlohmann_json_DIR:PATH=/home/shashidhar/vcpkg/installed/x64-linux/share/nlohmann_json
 

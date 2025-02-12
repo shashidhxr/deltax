@@ -846,6 +846,7 @@ CMakeFiles/deltax.dir/src/server.cpp.o: ../src/server.cpp \
   /usr/include/c++/11/bits/this_thread_sleep.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
+  ../header/auth.h \
   /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/spdlog.h \
   /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/common.h \
   /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/null_mutex.h \
@@ -1010,6 +1011,8 @@ CMakeFiles/deltax.dir/src/server.cpp.o: ../src/server.cpp \
 /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/null_mutex.h:
 
 /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/spdlog.h:
+
+../header/auth.h:
 
 ../src/server.cpp:
 
