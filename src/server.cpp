@@ -62,7 +62,7 @@ void Server::start()
     spdlog::info("starting server on port {}", port);
 
     // todo - fetch hosts from a json file
-    std::vector<std::string> user_service_hosts = {"http://localhost:5000"};
+    std::vector<std::string> user_service_hosts = {"http://localhost:5000", "http://localhost:5001", "http://localhost:5005"};
     int user_service_index = 0;
 
     svr.Get("/", [](const httplib::Request &req, httplib::Response &res) { 
