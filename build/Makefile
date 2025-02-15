@@ -129,6 +129,30 @@ deltax/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/build
 .PHONY : deltax/fast
 
+src/auth.o: src/auth.cpp.o
+.PHONY : src/auth.o
+
+# target to build an object file
+src/auth.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/auth.cpp.o
+.PHONY : src/auth.cpp.o
+
+src/auth.i: src/auth.cpp.i
+.PHONY : src/auth.i
+
+# target to preprocess a source file
+src/auth.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/auth.cpp.i
+.PHONY : src/auth.cpp.i
+
+src/auth.s: src/auth.cpp.s
+.PHONY : src/auth.s
+
+# target to generate assembly for a file
+src/auth.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/auth.cpp.s
+.PHONY : src/auth.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... deltax"
+	@echo "... src/auth.o"
+	@echo "... src/auth.i"
+	@echo "... src/auth.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
