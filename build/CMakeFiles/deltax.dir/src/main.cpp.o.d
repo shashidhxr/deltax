@@ -1,7 +1,6 @@
 CMakeFiles/deltax.dir/src/main.cpp.o: \
- /home/shashidhar/code/dev0/deltax/src/main.cpp \
- /usr/include/stdc-predef.h \
- /home/shashidhar/code/dev0/deltax/header/server.h \
+ /home/shashidhar/dev0/deltax/src/main.cpp /usr/include/stdc-predef.h \
+ /home/shashidhar/dev0/deltax/header/server.h \
  /home/shashidhar/vcpkg/installed/x64-linux/include/httplib.h \
  /usr/include/arpa/inet.h /usr/include/features.h \
  /usr/include/features-time64.h \
@@ -333,4 +332,4 @@ CMakeFiles/deltax.dir/src/main.cpp.o: \
  /usr/include/c++/11/bits/this_thread_sleep.h \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h \
- /home/shashidhar/code/dev0/deltax/header/auth.h
+ /home/shashidhar/dev0/deltax/header/auth.h

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shashidhar/code/dev0/deltax
+CMAKE_SOURCE_DIR = /home/shashidhar/dev0/deltax
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shashidhar/code/dev0/deltax/build
+CMAKE_BINARY_DIR = /home/shashidhar/dev0/deltax/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/deltax.dir/depend.make
@@ -72,50 +72,65 @@ include CMakeFiles/deltax.dir/flags.make
 CMakeFiles/deltax.dir/src/main.cpp.o: CMakeFiles/deltax.dir/flags.make
 CMakeFiles/deltax.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/deltax.dir/src/main.cpp.o: CMakeFiles/deltax.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shashidhar/code/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/deltax.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deltax.dir/src/main.cpp.o -MF CMakeFiles/deltax.dir/src/main.cpp.o.d -o CMakeFiles/deltax.dir/src/main.cpp.o -c /home/shashidhar/code/dev0/deltax/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shashidhar/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/deltax.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deltax.dir/src/main.cpp.o -MF CMakeFiles/deltax.dir/src/main.cpp.o.d -o CMakeFiles/deltax.dir/src/main.cpp.o -c /home/shashidhar/dev0/deltax/src/main.cpp
 
 CMakeFiles/deltax.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/deltax.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shashidhar/code/dev0/deltax/src/main.cpp > CMakeFiles/deltax.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shashidhar/dev0/deltax/src/main.cpp > CMakeFiles/deltax.dir/src/main.cpp.i
 
 CMakeFiles/deltax.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/deltax.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shashidhar/code/dev0/deltax/src/main.cpp -o CMakeFiles/deltax.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shashidhar/dev0/deltax/src/main.cpp -o CMakeFiles/deltax.dir/src/main.cpp.s
 
 CMakeFiles/deltax.dir/src/server.cpp.o: CMakeFiles/deltax.dir/flags.make
 CMakeFiles/deltax.dir/src/server.cpp.o: ../src/server.cpp
 CMakeFiles/deltax.dir/src/server.cpp.o: CMakeFiles/deltax.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shashidhar/code/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/deltax.dir/src/server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deltax.dir/src/server.cpp.o -MF CMakeFiles/deltax.dir/src/server.cpp.o.d -o CMakeFiles/deltax.dir/src/server.cpp.o -c /home/shashidhar/code/dev0/deltax/src/server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shashidhar/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/deltax.dir/src/server.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deltax.dir/src/server.cpp.o -MF CMakeFiles/deltax.dir/src/server.cpp.o.d -o CMakeFiles/deltax.dir/src/server.cpp.o -c /home/shashidhar/dev0/deltax/src/server.cpp
 
 CMakeFiles/deltax.dir/src/server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/deltax.dir/src/server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shashidhar/code/dev0/deltax/src/server.cpp > CMakeFiles/deltax.dir/src/server.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shashidhar/dev0/deltax/src/server.cpp > CMakeFiles/deltax.dir/src/server.cpp.i
 
 CMakeFiles/deltax.dir/src/server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/deltax.dir/src/server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shashidhar/code/dev0/deltax/src/server.cpp -o CMakeFiles/deltax.dir/src/server.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shashidhar/dev0/deltax/src/server.cpp -o CMakeFiles/deltax.dir/src/server.cpp.s
 
 CMakeFiles/deltax.dir/src/auth.cpp.o: CMakeFiles/deltax.dir/flags.make
 CMakeFiles/deltax.dir/src/auth.cpp.o: ../src/auth.cpp
 CMakeFiles/deltax.dir/src/auth.cpp.o: CMakeFiles/deltax.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shashidhar/code/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/deltax.dir/src/auth.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deltax.dir/src/auth.cpp.o -MF CMakeFiles/deltax.dir/src/auth.cpp.o.d -o CMakeFiles/deltax.dir/src/auth.cpp.o -c /home/shashidhar/code/dev0/deltax/src/auth.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shashidhar/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/deltax.dir/src/auth.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deltax.dir/src/auth.cpp.o -MF CMakeFiles/deltax.dir/src/auth.cpp.o.d -o CMakeFiles/deltax.dir/src/auth.cpp.o -c /home/shashidhar/dev0/deltax/src/auth.cpp
 
 CMakeFiles/deltax.dir/src/auth.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/deltax.dir/src/auth.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shashidhar/code/dev0/deltax/src/auth.cpp > CMakeFiles/deltax.dir/src/auth.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shashidhar/dev0/deltax/src/auth.cpp > CMakeFiles/deltax.dir/src/auth.cpp.i
 
 CMakeFiles/deltax.dir/src/auth.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/deltax.dir/src/auth.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shashidhar/code/dev0/deltax/src/auth.cpp -o CMakeFiles/deltax.dir/src/auth.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shashidhar/dev0/deltax/src/auth.cpp -o CMakeFiles/deltax.dir/src/auth.cpp.s
+
+CMakeFiles/deltax.dir/src/config.cpp.o: CMakeFiles/deltax.dir/flags.make
+CMakeFiles/deltax.dir/src/config.cpp.o: ../src/config.cpp
+CMakeFiles/deltax.dir/src/config.cpp.o: CMakeFiles/deltax.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shashidhar/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/deltax.dir/src/config.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/deltax.dir/src/config.cpp.o -MF CMakeFiles/deltax.dir/src/config.cpp.o.d -o CMakeFiles/deltax.dir/src/config.cpp.o -c /home/shashidhar/dev0/deltax/src/config.cpp
+
+CMakeFiles/deltax.dir/src/config.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/deltax.dir/src/config.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shashidhar/dev0/deltax/src/config.cpp > CMakeFiles/deltax.dir/src/config.cpp.i
+
+CMakeFiles/deltax.dir/src/config.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/deltax.dir/src/config.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shashidhar/dev0/deltax/src/config.cpp -o CMakeFiles/deltax.dir/src/config.cpp.s
 
 # Object files for target deltax
 deltax_OBJECTS = \
 "CMakeFiles/deltax.dir/src/main.cpp.o" \
 "CMakeFiles/deltax.dir/src/server.cpp.o" \
-"CMakeFiles/deltax.dir/src/auth.cpp.o"
+"CMakeFiles/deltax.dir/src/auth.cpp.o" \
+"CMakeFiles/deltax.dir/src/config.cpp.o"
 
 # External object files for target deltax
 deltax_EXTERNAL_OBJECTS =
@@ -123,13 +138,15 @@ deltax_EXTERNAL_OBJECTS =
 deltax: CMakeFiles/deltax.dir/src/main.cpp.o
 deltax: CMakeFiles/deltax.dir/src/server.cpp.o
 deltax: CMakeFiles/deltax.dir/src/auth.cpp.o
+deltax: CMakeFiles/deltax.dir/src/config.cpp.o
 deltax: CMakeFiles/deltax.dir/build.make
 deltax: /home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libspdlogd.a
-deltax: /home/shashidhar/vcpkg/installed/x64-linux/lib/libssl.a
-deltax: /home/shashidhar/vcpkg/installed/x64-linux/lib/libcrypto.a
+deltax: /home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libssl.a
+deltax: /home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libcrypto.a
+deltax: /home/shashidhar/vcpkg/installed/x64-linux/lib/libz.a
 deltax: /home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libfmtd.a
 deltax: CMakeFiles/deltax.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/shashidhar/code/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable deltax"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/shashidhar/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable deltax"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/deltax.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -141,6 +158,6 @@ CMakeFiles/deltax.dir/clean:
 .PHONY : CMakeFiles/deltax.dir/clean
 
 CMakeFiles/deltax.dir/depend:
-	cd /home/shashidhar/code/dev0/deltax/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shashidhar/code/dev0/deltax /home/shashidhar/code/dev0/deltax /home/shashidhar/code/dev0/deltax/build /home/shashidhar/code/dev0/deltax/build /home/shashidhar/code/dev0/deltax/build/CMakeFiles/deltax.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/shashidhar/dev0/deltax/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shashidhar/dev0/deltax /home/shashidhar/dev0/deltax /home/shashidhar/dev0/deltax/build /home/shashidhar/dev0/deltax/build /home/shashidhar/dev0/deltax/build/CMakeFiles/deltax.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/deltax.dir/depend
 

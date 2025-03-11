@@ -1,7 +1,6 @@
 CMakeFiles/deltax.dir/src/server.cpp.o: \
- /home/shashidhar/code/dev0/deltax/src/server.cpp \
- /usr/include/stdc-predef.h \
- /home/shashidhar/code/dev0/deltax/header/server.h \
+ /home/shashidhar/dev0/deltax/src/server.cpp /usr/include/stdc-predef.h \
+ /home/shashidhar/dev0/deltax/header/server.h \
  /home/shashidhar/vcpkg/installed/x64-linux/include/httplib.h \
  /usr/include/arpa/inet.h /usr/include/features.h \
  /usr/include/features-time64.h \
@@ -333,27 +332,10 @@ CMakeFiles/deltax.dir/src/server.cpp.o: \
  /usr/include/c++/11/bits/this_thread_sleep.h \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h \
- /home/shashidhar/code/dev0/deltax/header/auth.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/spdlog.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/common.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/null_mutex.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/tweakme.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/fmt/fmt.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/fmt/core.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/fmt/format.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/fmt/base.h \
- /usr/include/c++/11/cstddef \
- /home/shashidhar/vcpkg/installed/x64-linux/include/fmt/format.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/registry.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/periodic_worker.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/synchronous_factory.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/logger.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/backtracer.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/circular_q.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/log_msg_buffer.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/log_msg.h \
- /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/version.h \
+ /home/shashidhar/dev0/deltax/header/auth.h \
+ /home/shashidhar/dev0/deltax/header/config.h \
  /home/shashidhar/vcpkg/installed/x64-linux/include/nlohmann/json.hpp \
+ /usr/include/c++/11/cstddef \
  /home/shashidhar/vcpkg/installed/x64-linux/include/nlohmann/adl_serializer.hpp \
  /home/shashidhar/vcpkg/installed/x64-linux/include/nlohmann/detail/abi_macros.hpp \
  /home/shashidhar/vcpkg/installed/x64-linux/include/nlohmann/detail/conversions/from_json.hpp \
@@ -413,4 +395,44 @@ CMakeFiles/deltax.dir/src/server.cpp.o: \
  /home/shashidhar/vcpkg/installed/x64-linux/include/nlohmann/ordered_map.hpp \
  /usr/include/c++/11/any \
  /home/shashidhar/vcpkg/installed/x64-linux/include/nlohmann/detail/macro_unscope.hpp \
- /home/shashidhar/vcpkg/installed/x64-linux/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+ /home/shashidhar/vcpkg/installed/x64-linux/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+ /usr/local/include/ixwebsocket/IXWebSocket.h \
+ /usr/local/include/ixwebsocket/IXProgressCallback.h \
+ /usr/local/include/ixwebsocket/IXSocketTLSOptions.h \
+ /usr/local/include/ixwebsocket/IXWebSocketCloseConstants.h \
+ /usr/local/include/ixwebsocket/IXWebSocketErrorInfo.h \
+ /usr/local/include/ixwebsocket/IXWebSocketHttpHeaders.h \
+ /usr/local/include/ixwebsocket/IXCancellationRequest.h \
+ /usr/local/include/ixwebsocket/IXStrCaseCompare.h \
+ /usr/local/include/ixwebsocket/IXWebSocketMessage.h \
+ /usr/local/include/ixwebsocket/IXWebSocketCloseInfo.h \
+ /usr/local/include/ixwebsocket/IXWebSocketMessageType.h \
+ /usr/local/include/ixwebsocket/IXWebSocketOpenInfo.h \
+ /usr/local/include/ixwebsocket/IXWebSocketPerMessageDeflateOptions.h \
+ /usr/local/include/ixwebsocket/IXWebSocketSendData.h \
+ /usr/local/include/ixwebsocket/IXWebSocketSendInfo.h \
+ /usr/local/include/ixwebsocket/IXWebSocketTransport.h \
+ /usr/local/include/ixwebsocket/IXWebSocketHandshake.h \
+ /usr/local/include/ixwebsocket/IXHttp.h \
+ /usr/local/include/ixwebsocket/IXSocket.h \
+ /usr/local/include/ixwebsocket/IXSelectInterrupt.h \
+ /usr/local/include/ixwebsocket/IXWebSocketInitResult.h \
+ /usr/local/include/ixwebsocket/IXWebSocketPerMessageDeflate.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/spdlog.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/common.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/null_mutex.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/tweakme.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/fmt/fmt.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/fmt/core.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/fmt/format.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/fmt/base.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/fmt/format.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/registry.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/periodic_worker.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/synchronous_factory.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/logger.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/backtracer.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/circular_q.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/log_msg_buffer.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/details/log_msg.h \
+ /home/shashidhar/vcpkg/installed/x64-linux/include/spdlog/version.h

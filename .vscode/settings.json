@@ -1,6 +1,9 @@
 {
     "C_Cpp.dimInactiveRegions": false,
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "chrono": "cpp",
+        "unordered_map": "cpp",
+        "fstream": "cpp"
     }
 }

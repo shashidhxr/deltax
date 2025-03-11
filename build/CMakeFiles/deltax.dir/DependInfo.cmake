@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/shashidhar/code/dev0/deltax/src/auth.cpp" "CMakeFiles/deltax.dir/src/auth.cpp.o" "gcc" "CMakeFiles/deltax.dir/src/auth.cpp.o.d"
-  "/home/shashidhar/code/dev0/deltax/src/main.cpp" "CMakeFiles/deltax.dir/src/main.cpp.o" "gcc" "CMakeFiles/deltax.dir/src/main.cpp.o.d"
-  "/home/shashidhar/code/dev0/deltax/src/server.cpp" "CMakeFiles/deltax.dir/src/server.cpp.o" "gcc" "CMakeFiles/deltax.dir/src/server.cpp.o.d"
+  "/home/shashidhar/dev0/deltax/src/auth.cpp" "CMakeFiles/deltax.dir/src/auth.cpp.o" "gcc" "CMakeFiles/deltax.dir/src/auth.cpp.o.d"
+  "/home/shashidhar/dev0/deltax/src/config.cpp" "CMakeFiles/deltax.dir/src/config.cpp.o" "gcc" "CMakeFiles/deltax.dir/src/config.cpp.o.d"
+  "/home/shashidhar/dev0/deltax/src/main.cpp" "CMakeFiles/deltax.dir/src/main.cpp.o" "gcc" "CMakeFiles/deltax.dir/src/main.cpp.o.d"
+  "/home/shashidhar/dev0/deltax/src/server.cpp" "CMakeFiles/deltax.dir/src/server.cpp.o" "gcc" "CMakeFiles/deltax.dir/src/server.cpp.o.d"
   )
 
 # Targets to which this target links.
