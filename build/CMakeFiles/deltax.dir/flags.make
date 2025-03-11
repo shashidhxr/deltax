@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL
 
-CXX_INCLUDES = -I/home/shashidhar/code/dev0/deltax/header -isystem /home/shashidhar/vcpkg/installed/x64-linux/include
+CXX_INCLUDES = -I/home/shashidhar/dev0/deltax/header -isystem /home/shashidhar/vcpkg/installed/x64-linux/include
 
 CXX_FLAGS = -std=gnu++17
 

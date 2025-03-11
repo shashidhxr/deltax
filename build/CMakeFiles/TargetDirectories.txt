@@ -1,3 +1,3 @@
-/home/shashidhar/code/dev0/deltax/build/CMakeFiles/deltax.dir
-/home/shashidhar/code/dev0/deltax/build/CMakeFiles/edit_cache.dir
-/home/shashidhar/code/dev0/deltax/build/CMakeFiles/rebuild_cache.dir
+/home/shashidhar/dev0/deltax/build/CMakeFiles/deltax.dir
+/home/shashidhar/dev0/deltax/build/CMakeFiles/edit_cache.dir
+/home/shashidhar/dev0/deltax/build/CMakeFiles/rebuild_cache.dir

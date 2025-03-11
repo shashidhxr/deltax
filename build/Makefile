@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shashidhar/code/dev0/deltax
+CMAKE_SOURCE_DIR = /home/shashidhar/dev0/deltax
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shashidhar/code/dev0/deltax/build
+CMAKE_BINARY_DIR = /home/shashidhar/dev0/deltax/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shashidhar/code/dev0/deltax/build/CMakeFiles /home/shashidhar/code/dev0/deltax/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shashidhar/dev0/deltax/build/CMakeFiles /home/shashidhar/dev0/deltax/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shashidhar/code/dev0/deltax/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shashidhar/dev0/deltax/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -153,6 +153,30 @@ src/auth.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/auth.cpp.s
 .PHONY : src/auth.cpp.s
 
+src/config.o: src/config.cpp.o
+.PHONY : src/config.o
+
+# target to build an object file
+src/config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/config.cpp.o
+.PHONY : src/config.cpp.o
+
+src/config.i: src/config.cpp.i
+.PHONY : src/config.i
+
+# target to preprocess a source file
+src/config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/config.cpp.i
+.PHONY : src/config.cpp.i
+
+src/config.s: src/config.cpp.s
+.PHONY : src/config.s
+
+# target to generate assembly for a file
+src/config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/config.cpp.s
+.PHONY : src/config.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -213,6 +237,9 @@ help:
 	@echo "... src/auth.o"
 	@echo "... src/auth.i"
 	@echo "... src/auth.s"
+	@echo "... src/config.o"
+	@echo "... src/config.i"
+	@echo "... src/config.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
