@@ -143,6 +143,7 @@ deltax: CMakeFiles/deltax.dir/build.make
 deltax: /home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libspdlogd.a
 deltax: /home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libssl.a
 deltax: /home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libcrypto.a
+deltax: /home/shashidhar/vcpkg/installed/x64-linux/lib/libz.a
 deltax: /home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libfmtd.a
 deltax: CMakeFiles/deltax.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/shashidhar/dev0/deltax/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable deltax"
