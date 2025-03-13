@@ -18,7 +18,7 @@ class ConfigManager {
 public:
     explicit ConfigManager(const std::string& websocket_url);
     void start_websocket_listener();
-    void saveConfig(const std::string& filename);
+    // void saveConfig(const std::string& filename);
     const APIConfig* get_config(const std::string& path) const;
 
 private:
