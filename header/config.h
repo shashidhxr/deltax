@@ -1,14 +1,15 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#pragma once
 
-#include <nlohmann/json.hpp>
-#include <unordered_map>
-#include <vector>
 #include <string>
+#include <unordered_map>
 #include <mutex>
 #include <ixwebsocket/IXWebSocket.h>
+#include <nlohmann/json.hpp>
+#include <httplib.h>
 
 struct APIConfig {
+    int api_id;
+    int user_id;
     std::string exposed_url;
     std::string target_url;
     std::string method;
@@ -16,18 +17,23 @@ struct APIConfig {
 
 class ConfigManager {
 public:
-    explicit ConfigManager(const std::string& websocket_url);
+    ConfigManager(const std::string& websocket_url);
+    
     void start_websocket_listener();
-    // void saveConfig(const std::string& filename);
     const APIConfig* get_config(const std::string& path) const;
+    
+    // Add these methods to handle config file operations
+    void fetch_config_from_server();
+    void save_config_to_file();
+    void load_config_from_file();
 
 private:
     void update_config(const nlohmann::json& config);
-
-    std::unordered_map<std::string, APIConfig> config_map_;
-    mutable std::mutex mutex_;
+    
     std::string websocket_url_;
+    std::string config_file_path_;
     ix::WebSocket ws_;
+    mutable std::mutex mutex_;
+    std::unordered_map<std::string, APIConfig> config_map_;
+    nlohmann::json full_config_;  // Store the full config for saving to file
 };
-
-#endif
