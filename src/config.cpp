@@ -46,7 +46,7 @@ void ConfigManager::fetch_config_from_server() {
     httplib::Client cli("http://localhost:5000"); // Adjust URL to match your Node.js server
     auto res = cli.Get("/api/gateway/config");
     
-    if (res && res->status == 200) {
+    if (res && res->status == 200 || res->status == 201) {
         try {
             nlohmann::json config = nlohmann::json::parse(res->body);
             update_config(config);

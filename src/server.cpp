@@ -10,7 +10,7 @@
 #include <mutex>
 
 // Initialize ConfigManager with the WebSocket URL
-ConfigManager configManager("ws://localhost:5000/ws");
+ConfigManager configManager("ws://localhost:5000");
 
 Server::Server(int port) : port{port} {}
 
