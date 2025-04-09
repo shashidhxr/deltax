@@ -14,8 +14,12 @@ void WebSocketClient::connect(const std::string& url) {
         if (msg->type == ix::WebSocketMessageType::Message) {
             spdlog::info("Received config update: {}", msg->str);
             auto json = nlohmann::json::parse(msg->str);
-            router.updateRoutes(json);
-            configManager.save(router.getRoutes());
+            if (json.contains("routes") && json["routes"].is_object()) {
+                router.updateRoutes(json["routes"]);
+                configManager.save(router.getRoutes());
+            } else {
+                spdlog::warn("WebSocket message does not contain valid 'routes' object.");
+            }
         } else if (msg->type == ix::WebSocketMessageType::Open) {
             spdlog::info("WebSocket connection established");
         } else if (msg->type == ix::WebSocketMessageType::Error) {

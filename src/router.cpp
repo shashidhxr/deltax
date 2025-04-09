@@ -3,12 +3,18 @@
 
 #include <spdlog/spdlog.h>
 
-void Router::updateRoutes(const nlohmann::json& json) {
+void Router::updateRoutes(const nlohmann::json &routesJson) {
     std::lock_guard<std::mutex> lock(mutex);
     route_map.clear();
-    for (auto& [path, target] : json["routes"].items()) {
-        route_map[path] = target;
+
+    for (auto &[key, value] : routesJson.items()) {
+        if (!value.is_string()) {
+            spdlog::warn("Skipping route {} due to non-string target.", key);
+            continue;
+        }
+        route_map[key] = value.get<std::string>();
     }
+
     spdlog::info("Updated route configuration with {} routes", route_map.size());
 }
 
@@ -69,3 +75,5 @@ const std::unordered_map<std::string, std::string>& Router::getRoutes() const {
 std::unordered_map<std::string, std::string>& Router::getRoutesMutable() {
     return route_map;
 }
+
+
