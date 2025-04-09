@@ -1,8 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/deltax.dir/src/auth.cpp.o"
-  "CMakeFiles/deltax.dir/src/auth.cpp.o.d"
-  "CMakeFiles/deltax.dir/src/config.cpp.o"
-  "CMakeFiles/deltax.dir/src/config.cpp.o.d"
   "CMakeFiles/deltax.dir/src/main.cpp.o"
   "CMakeFiles/deltax.dir/src/main.cpp.o.d"
   "CMakeFiles/deltax.dir/src/server.cpp.o"
