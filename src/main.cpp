@@ -1,10 +1,10 @@
-#include "server.hpp"
+#include "server.h"
 #include <spdlog/spdlog.h>
 
 int main() {
-    // Configure logger with more detailed output
-    spdlog::set_level(spdlog::level::debug);
-    spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
+    // Configure logger
+    spdlog::set_level(spdlog::level::info);
+    spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v");
     
     int port = 8111;
     
