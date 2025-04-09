@@ -81,12 +81,12 @@ clean: CMakeFiles/deltax.dir/clean
 CMakeFiles/deltax.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shashidhar/dev0/deltax/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target deltax"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shashidhar/dev0/deltax/build/CMakeFiles --progress-num=1,2,3 "Built target deltax"
 .PHONY : CMakeFiles/deltax.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/deltax.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shashidhar/dev0/deltax/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shashidhar/dev0/deltax/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/deltax.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/shashidhar/dev0/deltax/build/CMakeFiles 0
 .PHONY : CMakeFiles/deltax.dir/rule

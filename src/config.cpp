@@ -4,7 +4,7 @@
 #include <fstream>
 
 ConfigManager::ConfigManager(const std::string& websocket_url) 
-    : websocket_url_(websocket_url), config_file_path_("config.json") {
+    : websocket_url_(websocket_url), config_file_path_("../config.json") {
     // Try to load existing config file on startup
     load_config_from_file();
 }
@@ -43,7 +43,7 @@ void ConfigManager::fetch_config_from_server() {
     spdlog::info("Fetching configuration from server");
     
     // Create HTTP client to fetch the config
-    httplib::Client cli("http://localhost:5000"); // Adjust URL to match your Node.js server
+    httplib::Client cli("http://localhost:5000");
     auto res = cli.Get("/api/gateway/config");
     
     if (res && res->status == 200 || res->status == 201) {
