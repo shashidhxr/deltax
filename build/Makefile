@@ -129,6 +129,30 @@ deltax/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/build
 .PHONY : deltax/fast
 
+src/config.o: src/config.cpp.o
+.PHONY : src/config.o
+
+# target to build an object file
+src/config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/config.cpp.o
+.PHONY : src/config.cpp.o
+
+src/config.i: src/config.cpp.i
+.PHONY : src/config.i
+
+# target to preprocess a source file
+src/config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/config.cpp.i
+.PHONY : src/config.cpp.i
+
+src/config.s: src/config.cpp.s
+.PHONY : src/config.s
+
+# target to generate assembly for a file
+src/config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/config.cpp.s
+.PHONY : src/config.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -152,6 +176,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/router.o: src/router.cpp.o
+.PHONY : src/router.o
+
+# target to build an object file
+src/router.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/router.cpp.o
+.PHONY : src/router.cpp.o
+
+src/router.i: src/router.cpp.i
+.PHONY : src/router.i
+
+# target to preprocess a source file
+src/router.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/router.cpp.i
+.PHONY : src/router.cpp.i
+
+src/router.s: src/router.cpp.s
+.PHONY : src/router.s
+
+# target to generate assembly for a file
+src/router.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/router.cpp.s
+.PHONY : src/router.cpp.s
 
 src/server.o: src/server.cpp.o
 .PHONY : src/server.o
@@ -177,6 +225,30 @@ src/server.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/server.cpp.s
 .PHONY : src/server.cpp.s
 
+src/ws_client.o: src/ws_client.cpp.o
+.PHONY : src/ws_client.o
+
+# target to build an object file
+src/ws_client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/ws_client.cpp.o
+.PHONY : src/ws_client.cpp.o
+
+src/ws_client.i: src/ws_client.cpp.i
+.PHONY : src/ws_client.i
+
+# target to preprocess a source file
+src/ws_client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/ws_client.cpp.i
+.PHONY : src/ws_client.cpp.i
+
+src/ws_client.s: src/ws_client.cpp.s
+.PHONY : src/ws_client.s
+
+# target to generate assembly for a file
+src/ws_client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/ws_client.cpp.s
+.PHONY : src/ws_client.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +258,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... deltax"
+	@echo "... src/config.o"
+	@echo "... src/config.i"
+	@echo "... src/config.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/router.o"
+	@echo "... src/router.i"
+	@echo "... src/router.s"
 	@echo "... src/server.o"
 	@echo "... src/server.i"
 	@echo "... src/server.s"
+	@echo "... src/ws_client.o"
+	@echo "... src/ws_client.i"
+	@echo "... src/ws_client.s"
 .PHONY : help
 
 
