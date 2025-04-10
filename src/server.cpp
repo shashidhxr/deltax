@@ -4,7 +4,7 @@
 
 Server::Server(int port, const std::string& config_path)
     : port(port), configManager(config_path), wsClient(router, configManager) {
-    configManager.load(router.getRoutesMutable());
+    configManager.load(router.getAllUserRoutesMutable());
 }
 
 void Server::start() {

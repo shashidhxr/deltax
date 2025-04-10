@@ -1,19 +1,29 @@
 // server/Router.h
 #pragma once
-#include <unordered_map>
+
 #include <string>
+#include <unordered_map>
 #include <mutex>
 #include <httplib.h>
 #include <nlohmann/json.hpp>
 
-class Router {
-public:
-    void updateRoutes(const nlohmann::json& json);
-    void setupRouteHandler(httplib::Server& svr);
-    const std::unordered_map<std::string, std::string>& getRoutes() const;
-    std::unordered_map<std::string, std::string>& getRoutesMutable();
+using RouteMap = std::unordered_map<std::string, std::string>;
+using UserRouteMap = std::unordered_map<std::string, RouteMap>;
 
+class Router {
 private:
-    std::unordered_map<std::string, std::string> route_map;
+    UserRouteMap user_routes;  // userId -> {route -> target}
     std::mutex mutex;
+
+public:
+    Router() = default;
+
+    void updateUserRoutes(const std::string& userId, const nlohmann::json& routesJson);
+    void removeUserRoutes(const std::string& userId);
+    void setupRouteHandler(httplib::Server& svr);
+    const UserRouteMap& getAllUserRoutes() const;
+    UserRouteMap& getAllUserRoutesMutable();
+    
+    const RouteMap& getUserRoutes(const std::string& userId) const;
+    bool hasUser(const std::string& userId) const;
 };
