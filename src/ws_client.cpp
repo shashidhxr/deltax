@@ -12,7 +12,8 @@ void WebSocketClient::connect(const std::string& url) {
     
     ws.setOnMessageCallback([this](const ix::WebSocketMessagePtr &msg) {
         if (msg->type == ix::WebSocketMessageType::Message) {
-            spdlog::info("Received config update: {}", msg->str);
+            // spdlog::info("Received config update: {}", msg->str);
+            spdlog::info("Received message via WS: {}", msg->str);
             
             try {
                 auto json = nlohmann::json::parse(msg->str);
@@ -29,6 +30,8 @@ void WebSocketClient::connect(const std::string& url) {
                         // Check if the route has a target directly or nested in a target property
                         std::string targetUrl;
                         
+
+                        // todo - structure the conditions better
                         if (routeData.is_string()) {
                             // Simple format: "/path": "http://target.com"
                             targetUrl = routeData.get<std::string>();

@@ -1,6 +1,8 @@
-instr.txt
 deltax
 IXWebSocket
 del
 config.json
 CMakeFiles
+
+instr.txt
+ix_ws.txt
