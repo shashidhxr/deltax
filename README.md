@@ -21,6 +21,9 @@ API gateway for workload-heavy tasks. Written in C++.
 
 Still in development. Bugs expected. Breaking things to learn and improve.
 
+backend and db repo - https://github.com/shashidhxr/backend-deltax
+frontend repo - https://github.com/shashidxr/web-deltax
+
 ### Live
 
 [https://deltax0.vercel.app](https://deltax0.vercel.app)
