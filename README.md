@@ -23,7 +23,7 @@ Still in development. Bugs expected. Breaking things to learn and improve.
 
 backend and db repo - https://github.com/shashidhxr/backend-deltax
 
-frontend repo - https://github.com/shashidxr/web-deltax
+frontend repo - https://github.com/shashidhxr/web-deltax
 
 ### Live
 
