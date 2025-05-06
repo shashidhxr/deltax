@@ -32,19 +32,21 @@ void WebSocketClient::connect(const std::string& url) {
                         
 
                         // todo - structure the conditions better
-                        if (routeData.is_string()) {
-                            // Simple format: "/path": "http://target.com"
-                            targetUrl = routeData.get<std::string>();
-                        } 
-                        else if (routeData.is_object() && routeData.contains("target")) {
+                        // if (routeData.is_string()) {
+                        //     // Simple format: "/path": "http://target.com"
+                        //     targetUrl = routeData.get<std::string>();
+                        // } 
+                        if (routeData.is_object() && routeData.contains("target")) {
                             // Complex format: "/path": { "target": "http://target.com", ... }
                             targetUrl = routeData["target"].get<std::string>();
                             
                             // Log additional config info that we'll use in the future
-                            if (routeData.contains("config")) {
-                                spdlog::debug("Route {} has additional config", path);
-                                // In the future, we can extract and use these configs
-                            }
+
+                            // todo - additional info for routing
+                            // if (routeData.contains("config")) {
+                            //     spdlog::debug("Route {} has additional config", path);
+                            //     // In the future, we can extract and use these configs
+                            // }
                         }
                         else {
                             spdlog::warn("Route {} has invalid format, skipping", path);
@@ -53,6 +55,7 @@ void WebSocketClient::connect(const std::string& url) {
                         
                         // Add to our simplified routes format
                         routesJson[path] = targetUrl;
+                        std::cout << routesJson << std::endl;
                     }
                     
                     // Update routes for this specific user

@@ -139,69 +139,58 @@ void Router::removeUserRoutes(const std::string& userId) {
 
 // The rest of the functions remain the same as in your previous implementation
 void Router::setupRouteHandler(httplib::Server& svr) {
-    svr.Get("/.*", [this](const httplib::Request& req, httplib::Response& res) {
+    svr.Get("/.*", [this](const httplib::Request& req, httplib::Response& res){
         std::string path = req.path;
-        
-        // Parse user ID from path or headers
-        // Format could be: /users/{userId}/api/{route} or use an HTTP header
-        std::string userId;
-        std::string actualPath;
-        
-        // Example path parsing (adjust according to your API design)
-        const std::string userPrefix = "/users/";
-        const std::string apiPrefix = "/api/";
-        
-        if (path.find(userPrefix) == 0) {
-            size_t apiPos = path.find(apiPrefix);
-            if (apiPos != std::string::npos) {
-                userId = path.substr(userPrefix.length(), apiPos - userPrefix.length());
-                actualPath = path.substr(apiPos);
+        std::vector<std::string> parts;
+        std::stringstream ss(path); 
+        std::string segment;
+
+        while(std::getline(ss, segment, '/')) {
+            if(!segment.empty()){
+                parts.push_back(segment);
             }
-        } else {
-            // Try to get from header if not in path
-            userId = req.get_header_value("X-User-ID");
-            actualPath = path;
         }
-        
-        if (userId.empty()) {
+
+        if(parts.size() < 2){
             res.status = 400;
-            res.set_content("User ID not provided", "text/plain");
+            res.set_content("Invalid path format. Use <gatewayURL>/<userId>/<exposedPath>", "text/plain");
             return;
         }
-        
+
+        std::string userId = parts[0];
+        std::string exposedPath = "/" + parts[1];
+
         std::string target_url;
         {
             std::lock_guard<std::mutex> lock(mutex);
-            auto userIt = user_routes.find(userId);
-            if (userIt == user_routes.end()) {
+            auto user_it = user_routes.find(userId);
+            if(user_it == user_routes.end()) {
                 res.status = 404;
-                res.set_content("User not found", "text/plain");
+                res.set_content("User not found. Check your dashboard for the route", "text/plain");
                 return;
             }
-            
-            auto& routes = userIt->second;
-            auto routeIt = routes.find(actualPath);
-            if (routeIt == routes.end()) {
+            auto& routes = user_it->second;         // why & routes
+            auto route_it = routes.find(exposedPath);
+            if(route_it == routes.end()){
                 res.status = 404;
-                res.set_content("Route not found", "text/plain");
+                res.set_content("Route not found. Check your dashboard for the route", "text/plain");
                 return;
             }
-            target_url = routeIt->second;
+            target_url = route_it->second;
         }
+
+        // req forwarding
+        spdlog::info("Forwarding req for user: {} path {} to {}", userId, exposedPath, target_url);
         
-        spdlog::info("Forwarding request for user {} path {} to {}", userId, actualPath, target_url);
-        
-        // The rest of the proxy logic remains the same
         std::string host;
         std::string target_path = "/";
-        
-        if (target_url.substr(0, 7) == "http://") {
+        if(target_url.substr(0, 7) == "http://"){
             target_url = target_url.substr(7);
         } else if (target_url.substr(0, 8) == "https://") {
             target_url = target_url.substr(8);
             spdlog::warn("HTTPS might not be fully supported");
         }
-        
+
         size_t path_pos = target_url.find('/');
         if (path_pos != std::string::npos) {
             host = target_url.substr(0, path_pos);
@@ -209,10 +198,10 @@ void Router::setupRouteHandler(httplib::Server& svr) {
         } else {
             host = target_url;
         }
-        
+
         httplib::Client cli(host.c_str());
         auto backend_res = cli.Get(target_path.c_str());
-        
+
         if (backend_res) {
             res.status = backend_res->status;
             res.set_content(backend_res->body, backend_res->get_header_value("Content-Type"));
@@ -221,7 +210,8 @@ void Router::setupRouteHandler(httplib::Server& svr) {
             spdlog::error("Failed to reach backend at {}{}", host, target_path);
             res.set_content("Failed to reach backend", "text/plain");
         }
-    });
+        
+    }); 
 }
 
 const UserRouteMap& Router::getAllUserRoutes() const {
