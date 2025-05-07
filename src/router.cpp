@@ -1,5 +1,7 @@
 // server/Router.cpp
 #include "router.h"
+#include "rate_limiter.h"
+
 #include <spdlog/spdlog.h>
 
 // This version of Router.cpp allows storing additional configuration data
@@ -17,6 +19,8 @@ struct RouteConfig {
     bool securitySsl = false;
     std::vector<std::string> securityIpWhitelist;
 };
+
+RateLimiter rateLimiter(5, 10);
 
 // This map will store the extended configuration for future use
 static std::unordered_map<std::string, std::unordered_map<std::string, RouteConfig>> routeConfigs;
@@ -144,6 +148,13 @@ void Router::setupRouteHandler(httplib::Server& svr) {
         std::vector<std::string> parts;
         std::stringstream ss(path); 
         std::string segment;
+
+        if (!rateLimiter.allow_req(req.remote_addr)) {
+            res.status = 429;
+            res.set_content("Rate limit exceeded", "text/plain");
+            spdlog::warn("Rate limit exceeded. Request blocked");
+            return;
+        }
 
         while(std::getline(ss, segment, '/')) {
             if(!segment.empty()){

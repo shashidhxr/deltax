@@ -18,7 +18,13 @@ find_package(ZLIB REQUIRED)
 
 
 # add_executable(deltax src/main.cpp src/server.cpp src/auth.cpp src/config.cpp)
-add_executable(deltax src/main.cpp src/server.cpp src/config.cpp src/router src/ws_client)
+add_executable( deltax 
+                src/main.cpp 
+                src/server.cpp 
+                src/config.cpp 
+                src/router 
+                src/ws_client 
+                src/rate_limiter.cpp)
 # add_executable(main src/main.cpp)
 
 target_link_libraries(deltax PRIVATE spdlog::spdlog)
