@@ -177,6 +177,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/rate_limiter.o: src/rate_limiter.cpp.o
+.PHONY : src/rate_limiter.o
+
+# target to build an object file
+src/rate_limiter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/rate_limiter.cpp.o
+.PHONY : src/rate_limiter.cpp.o
+
+src/rate_limiter.i: src/rate_limiter.cpp.i
+.PHONY : src/rate_limiter.i
+
+# target to preprocess a source file
+src/rate_limiter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/rate_limiter.cpp.i
+.PHONY : src/rate_limiter.cpp.i
+
+src/rate_limiter.s: src/rate_limiter.cpp.s
+.PHONY : src/rate_limiter.s
+
+# target to generate assembly for a file
+src/rate_limiter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/deltax.dir/build.make CMakeFiles/deltax.dir/src/rate_limiter.cpp.s
+.PHONY : src/rate_limiter.cpp.s
+
 src/router.o: src/router.cpp.o
 .PHONY : src/router.o
 
@@ -264,6 +288,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/rate_limiter.o"
+	@echo "... src/rate_limiter.i"
+	@echo "... src/rate_limiter.s"
 	@echo "... src/router.o"
 	@echo "... src/router.i"
 	@echo "... src/router.s"
