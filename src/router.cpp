@@ -20,7 +20,7 @@ struct RouteConfig {
     std::vector<std::string> securityIpWhitelist;
 };
 
-RateLimiter rateLimiter(5, 10);
+// Router::rateLimiter(5, 10);
 
 // This map will store the extended configuration for future use
 static std::unordered_map<std::string, std::unordered_map<std::string, RouteConfig>> routeConfigs;
