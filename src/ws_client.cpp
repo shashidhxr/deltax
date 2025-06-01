@@ -66,17 +66,20 @@ void WebSocketClient::connect(const std::string& url) {
                     
                     spdlog::info("Successfully updated routes for user {}", userId);
                 } 
+                
+                
+                // todo - handle more user and routes CRUD better
                 // Handle user deletion if needed
-                else if (json.contains("userId") && json.contains("action") && 
-                         json["action"].get<std::string>() == "delete") {
-                    std::string userId = json["userId"].get<std::string>();
-                    router.removeUserRoutes(userId);
+                // else if (json.contains("userId") && json.contains("action") && 
+                //          json["action"].get<std::string>() == "delete") {
+                //     std::string userId = json["userId"].get<std::string>();
+                //     router.removeUserRoutes(userId);
                     
-                    // Save the current state without this user
-                    configManager.save(router.getAllUserRoutes());
+                //     // Save the current state without this user
+                //     configManager.save(router.getAllUserRoutes());
                     
-                    spdlog::info("Removed routes for user {}", userId);
-                }
+                //     spdlog::info("Removed routes for user {}", userId);
+                // }
                 else {
                     spdlog::warn("WebSocket message format invalid: requires 'userId' and 'routes' fields");
                 }
@@ -94,4 +97,67 @@ void WebSocketClient::connect(const std::string& url) {
     });
     
     ws.start();
+}
+
+
+// void WebSocketClient::connect(const std::string& url) {
+//     spdlog::info("Connecting to WS backend ({})", url);
+//     ws.setUrl(url);
+
+//     ws.setOnMessageCallback([this](const ix::WebSocketMessagePtr& msg) {
+//         switch(msg->type) {
+//             case ix::WebSocketMessageType::Message:
+//                 handleMessage(msg->str);
+//                 break;
+//             case ix::WebSocketMessageType::Open:
+//                 spdlog::info("WS connection established");
+//                 break;
+//             case ix::WebSocketMessageType::Close:
+//                 spdlog::warn("WS connection closed");
+//                 break;
+//             case ix::WebSocketMessageType::Error:
+//                 spdlog::error("WS error: {}", msg->errorInfo.reason);
+//                 break;
+//         }
+//     })
+
+//     ws.start();
+// };
+
+
+void WebSocketClient::handleMessage(const std::string& msg) {
+    spdlog::info("Recieved message via WS", msg);
+    try {
+        auto json = nlohmann::json::parse(msg);
+
+        // new route or update route msg
+        if(json.contains("userId") && json.contains("routes")) {
+            processRouteUpdate(json);
+        }  
+        // todo handle other message - delete route, update exisint route  
+    } catch (const std::exception& e){
+        spdlog::error("Failed to process WS msg: {}", e.what());
+    }
+}
+
+void WebSocketClient::processRouteUpdate(const nlohmann::json& json) {
+    std::string userId = json["userId"];
+    nlohmann::json routesObject = nlohmann::json::object();     // new object to store routes
+
+    const auto routes = json["routes"];             
+    const auto routeItems = routes.items();
+
+    for (const auto& [path, routeData]: routeItems) {
+        if(routeData.is_object() && routeData.contains("target")) {
+            routesObject[path] = routeData["target"];
+        } else {
+            spdlog::warn("Invalid route format at {}, skipping", path);
+        }
+    }
+
+    if(!routesObject.empty()) {
+        router.updateUserRoutes(userId, routesObject);
+        configManager.updateUserRoutes(userId, router.getUserRoutes(userId));
+        spdlog::info("Routes updated for {}", userId);
+    }
 }

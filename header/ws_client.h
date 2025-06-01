@@ -12,6 +12,10 @@ public:
     void connect(const std::string& url);
 
 private:
+    void handleMessage(const std::string& msg);
+    void processRouteUpdate(const nlohmann::json& json);
+    // void processRouteDeletion(const)
+
     ix::WebSocket ws;
     Router& router;
     ConfigManager& configManager;
