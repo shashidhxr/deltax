@@ -1,11 +1,6 @@
-// server/Router.cpp
 #include "router.h"
-#include "rate_limiter.h"
 
 #include <spdlog/spdlog.h>
-
-// This version of Router.cpp allows storing additional configuration data
-// while still maintaining compatibility with the current implementation
 
 struct RouteConfig {
     std::string targetUrl;
@@ -20,10 +15,91 @@ struct RouteConfig {
     std::vector<std::string> securityIpWhitelist;
 };
 
-// Router::rateLimiter(5, 10);
-
-// This map will store the extended configuration for future use
 static std::unordered_map<std::string, std::unordered_map<std::string, RouteConfig>> routeConfigs;
+
+// The rest of the functions remain the same as in your previous implementation
+void Router::setupRouteHandler(httplib::Server& svr) {
+    svr.Get("/.*", [this](const httplib::Request& req, httplib::Response& res){
+        std::string path = req.path;
+        std::vector<std::string> parts;
+        std::stringstream ss(path); 
+        std::string segment;
+
+        if (!rateLimiter.allow_req(req.remote_addr)) {
+            res.status = 429;
+            res.set_content("Rate limit exceeded", "text/plain");
+            spdlog::warn("Rate limit exceeded. Request blocked");
+            return;
+        }
+
+        while(std::getline(ss, segment, '/')) {
+            if(!segment.empty()){
+                parts.push_back(segment);
+            }
+        }
+
+        if(parts.size() < 2){
+            res.status = 400;
+            res.set_content("Invalid path format. Use <gatewayURL>/<userId>/<exposedPath>", "text/plain");
+            return;
+        }
+
+        std::string userId = parts[0];
+        std::string exposedPath = "/" + parts[1];
+
+        std::string target_url;
+        {
+            std::lock_guard<std::mutex> lock(mutex);
+            auto user_it = user_routes.find(userId);
+            if(user_it == user_routes.end()) {
+                res.status = 404;
+                res.set_content("User not found. Check your dashboard for the route", "text/plain");
+                return;
+            }
+            auto& routes = user_it->second;         // why & routes
+            auto route_it = routes.find(exposedPath);
+            if(route_it == routes.end()){
+                res.status = 404;
+                res.set_content("Route not found. Check your dashboard for the route", "text/plain");
+                return;
+            }
+            target_url = route_it->second;
+        }
+
+        // req forwarding
+        spdlog::info("Forwarding req for user: {} path {} to {}", userId, exposedPath, target_url);
+        
+        std::string host;
+        std::string target_path = "/";
+        if(target_url.substr(0, 7) == "http://"){
+            target_url = target_url.substr(7);
+        } else if (target_url.substr(0, 8) == "https://") {
+            target_url = target_url.substr(8);
+            spdlog::warn("HTTPS might not be fully supported");
+        }
+
+        size_t path_pos = target_url.find('/');
+        if (path_pos != std::string::npos) {
+            host = target_url.substr(0, path_pos);
+            target_path = target_url.substr(path_pos);
+        } else {
+            host = target_url;
+        }
+
+        httplib::Client cli(host.c_str());
+        auto backend_res = cli.Get(target_path.c_str());
+
+        if (backend_res) {
+            res.status = backend_res->status;
+            res.set_content(backend_res->body, backend_res->get_header_value("Content-Type"));
+        } else {
+            res.status = 500;
+            spdlog::error("Failed to reach backend at {}{}", host, target_path);
+            res.set_content("Failed to reach backend", "text/plain");
+        }
+        
+    }); 
+}
 
 void Router::updateUserRoutes(const std::string& userId, const nlohmann::json& routesJson) {
     std::lock_guard<std::mutex> lock(mutex);
@@ -130,108 +206,16 @@ void Router::updateUserRoutes(const std::string& userId, const nlohmann::json& r
     spdlog::info("Updated routes for user {}: {} routes configured", userId, routes.size());
 }
 
-void Router::removeUserRoutes(const std::string& userId) {
-    std::lock_guard<std::mutex> lock(mutex);
-    auto it = user_routes.find(userId);
-    if (it != user_routes.end()) {
-        user_routes.erase(it);
-        // Also remove extended configs
-        routeConfigs.erase(userId);
-        spdlog::info("Removed all routes for user {}", userId);
-    }
-}
-
-// The rest of the functions remain the same as in your previous implementation
-void Router::setupRouteHandler(httplib::Server& svr) {
-    svr.Get("/.*", [this](const httplib::Request& req, httplib::Response& res){
-        std::string path = req.path;
-        std::vector<std::string> parts;
-        std::stringstream ss(path); 
-        std::string segment;
-
-        if (!rateLimiter.allow_req(req.remote_addr)) {
-            res.status = 429;
-            res.set_content("Rate limit exceeded", "text/plain");
-            spdlog::warn("Rate limit exceeded. Request blocked");
-            return;
-        }
-
-        while(std::getline(ss, segment, '/')) {
-            if(!segment.empty()){
-                parts.push_back(segment);
-            }
-        }
-
-        if(parts.size() < 2){
-            res.status = 400;
-            res.set_content("Invalid path format. Use <gatewayURL>/<userId>/<exposedPath>", "text/plain");
-            return;
-        }
-
-        std::string userId = parts[0];
-        std::string exposedPath = "/" + parts[1];
-
-        std::string target_url;
-        {
-            std::lock_guard<std::mutex> lock(mutex);
-            auto user_it = user_routes.find(userId);
-            if(user_it == user_routes.end()) {
-                res.status = 404;
-                res.set_content("User not found. Check your dashboard for the route", "text/plain");
-                return;
-            }
-            auto& routes = user_it->second;         // why & routes
-            auto route_it = routes.find(exposedPath);
-            if(route_it == routes.end()){
-                res.status = 404;
-                res.set_content("Route not found. Check your dashboard for the route", "text/plain");
-                return;
-            }
-            target_url = route_it->second;
-        }
-
-        // req forwarding
-        spdlog::info("Forwarding req for user: {} path {} to {}", userId, exposedPath, target_url);
-        
-        std::string host;
-        std::string target_path = "/";
-        if(target_url.substr(0, 7) == "http://"){
-            target_url = target_url.substr(7);
-        } else if (target_url.substr(0, 8) == "https://") {
-            target_url = target_url.substr(8);
-            spdlog::warn("HTTPS might not be fully supported");
-        }
-
-        size_t path_pos = target_url.find('/');
-        if (path_pos != std::string::npos) {
-            host = target_url.substr(0, path_pos);
-            target_path = target_url.substr(path_pos);
-        } else {
-            host = target_url;
-        }
-
-        httplib::Client cli(host.c_str());
-        auto backend_res = cli.Get(target_path.c_str());
-
-        if (backend_res) {
-            res.status = backend_res->status;
-            res.set_content(backend_res->body, backend_res->get_header_value("Content-Type"));
-        } else {
-            res.status = 500;
-            spdlog::error("Failed to reach backend at {}{}", host, target_path);
-            res.set_content("Failed to reach backend", "text/plain");
-        }
-        
-    }); 
-}
-
-const UserRouteMap& Router::getAllUserRoutes() const {
-    return user_routes;
-}
-
-UserRouteMap& Router::getAllUserRoutesMutable() {
-    return user_routes;
-}
+// void Router::removeUserRoutes(const std::string& userId) {
+//     std::lock_guard<std::mutex> lock(mutex);
+//     auto it = user_routes.find(userId);
+//     if (it != user_routes.end()) {
+//         user_routes.erase(it);
+//         // Also remove extended configs
+//         routeConfigs.erase(userId);
+//         spdlog::info("Removed all routes for user {}", userId);
+//     }
+// }
 
 const RouteMap& Router::getUserRoutes(const std::string& userId) const {
     static const RouteMap emptyMap;
@@ -239,6 +223,6 @@ const RouteMap& Router::getUserRoutes(const std::string& userId) const {
     return (it != user_routes.end()) ? it->second : emptyMap;
 }
 
-bool Router::hasUser(const std::string& userId) const {
-    return user_routes.find(userId) != user_routes.end();
+UserRouteMap& Router::getAllUserRoutesMutable() {
+    return user_routes;
 }

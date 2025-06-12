@@ -23,11 +23,11 @@ public:
     Router() = default;
 
     void updateUserRoutes(const std::string& userId, const nlohmann::json& routesJson);
-    void removeUserRoutes(const std::string& userId);
     void setupRouteHandler(httplib::Server& svr);
-    const UserRouteMap& getAllUserRoutes() const;
-    UserRouteMap& getAllUserRoutesMutable();
-    
+    // const UserRouteMap& getAllUserRoutes() const;
     const RouteMap& getUserRoutes(const std::string& userId) const;
-    bool hasUser(const std::string& userId) const;
+    
+    UserRouteMap& getAllUserRoutesMutable();
+    // void removeUserRoutes(const std::string& userId);
+    // bool hasUser(const std::string& userId) const;
 };
