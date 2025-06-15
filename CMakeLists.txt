@@ -30,9 +30,9 @@ add_executable( deltax
 target_link_libraries(deltax PRIVATE spdlog::spdlog)
 target_link_libraries(deltax PRIVATE httplib::httplib)
 target_link_libraries(deltax PRIVATE nlohmann_json::nlohmann_json)
-target_link_libraries(deltax PRIVATE OpenSSL::SSL OpenSSL::Crypto)
+# target_link_libraries(deltax PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 # target_link_libraries(main laserpants::dotenv)
-target_link_libraries(deltax PRIVATE ixwebsocket)
+target_link_libraries(deltax PRIVATE ixwebsocket OpenSSL::SSL OpenSSL::Crypto)      # link issues 
 target_link_libraries(deltax PRIVATE ZLIB::ZLIB)
 
 # test config

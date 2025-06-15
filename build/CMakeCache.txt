@@ -212,6 +212,9 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/shashidhar/vcpkg/scripts/buildsystems/vcpkg.
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//No help, variable specified on the command line.
+IXWEBSOCKET_USE_TLS:UNINITIALIZED=ON
+
 //Path to a library.
 OPENSSL_CRYPTO_LIBRARY:FILEPATH=/home/shashidhar/vcpkg/installed/x64-linux/debug/lib/libcrypto.a
 
