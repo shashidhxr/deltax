@@ -7,13 +7,15 @@ set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 
 include_directories(header)
 # add_subdirectory(nlohmann_json)
+include_directories("/app/vcpkg/installed/x64-linux/include")
 
-find_package(httplib CONFIG REQUIRED)
-find_package(spdlog CONFIG REQUIRED)
-find_package(nlohmann_json CONFIG REQUIRED)
+# find_package(httplib CONFIG REQUIRED)
+# find_package(spdlog CONFIG REQUIRED)
+# find_package(nlohmann_json CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
 # find_package(laserpants_dotenv REQUIRED)
 find_package(ixwebsocket REQUIRED)
+find_package(fmt CONFIG REQUIRED)
 find_package(ZLIB REQUIRED)
 
 
@@ -27,12 +29,21 @@ add_executable( deltax
                 src/rate_limiter.cpp)
 # add_executable(main src/main.cpp)
 
-target_link_libraries(deltax PRIVATE spdlog::spdlog)
-target_link_libraries(deltax PRIVATE httplib::httplib)
-target_link_libraries(deltax PRIVATE nlohmann_json::nlohmann_json)
+# link_directories("/app/vcpkg/installed/x64-linux/lib")
+
+# target_link_libraries(deltax PRIVATE httplib::httplib)
+# target_link_libraries(deltax PRIVATE spdlog::spdlog)
+# target_link_libraries(deltax PRIVATE nlohmann_json::nlohmann_json)
 # target_link_libraries(deltax PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 # target_link_libraries(main laserpants::dotenv)
-target_link_libraries(deltax PRIVATE ixwebsocket OpenSSL::SSL OpenSSL::Crypto)      # link issues 
+# target_link_libraries(deltax PRIVATE ixwebsocket OpenSSL::SSL OpenSSL::Crypto)      # link issues 
+
+target_link_libraries(deltax PRIVATE
+    /app/vcpkg/installed/x64-linux/lib/libixwebsocket.a
+    OpenSSL::SSL OpenSSL::Crypto
+)
+target_link_libraries(deltax PRIVATE fmt::fmt)
+
 target_link_libraries(deltax PRIVATE ZLIB::ZLIB)
 
 # test config

@@ -7,3 +7,6 @@ CMakeFiles
 instr.txt
 tasks.txt
 ix_ws.txt
+
+docker-vcpkg
+vcpkg-headers

@@ -1,18 +1,24 @@
-FROM ubuntu:22.04
+FROM gcc:latest
 
-RUN apt update && apt install -y \
-    build-essential \
-    cmake \
-    openssl \
-    libssl-dev \
-    git
+RUN apt update && apt install -y cmake openssl libssl-dev
 
 WORKDIR /app
 
 COPY src/ ./src
 COPY header/ ./header
-COPY CmakeLists.txt .
+COPY CMakeLists.txt .
 
-RUN mkdir build && cd build && cmake .. && make
+COPY vcpkg-headers/nlohmann ./vcpkg-headers/nlohmann
+COPY vcpkg-headers /app/vcpkg/installed/x64-linux/include
+
+# COPY docker-vcpkg/installed/x64-linux/include /app/vcpkg/installed/x64-linux/include
+# COPY docker-vcpkg/installed/x64-linux/share /app/vcpkg/installed/x64-linux/share
+
+COPY docker-vcpkg/installed/x64-linux/include /app/vcpkg/installed/x64-linux/include
+COPY docker-vcpkg/installed/x64-linux/share /app/vcpkg/installed/x64-linux/share
+COPY docker-vcpkg/installed/x64-linux/lib /app/vcpkg/installed/x64-linux/lib
+COPY docker-vcpkg/installed/x64-linux/debug /app/vcpkg/installed/x64-linux/debug
+
+RUN mkdir build && cd build && cmake .. -DCMAKE_PREFIX_PATH="/app/vcpkg/installed/x64-linux/share" && make
 
 CMD ["./build/deltax"]
