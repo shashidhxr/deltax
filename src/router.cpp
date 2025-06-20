@@ -11,7 +11,6 @@ struct RouteConfig {
     std::string loadBalancingAlgorithm;
     std::vector<std::string> loadBalancingTargets;
     bool securityCors = false;
-    bool securitySsl = false;
     std::vector<std::string> securityIpWhitelist;
 };
 

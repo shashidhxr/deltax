@@ -6,9 +6,11 @@
 #include <string>
 #include <unordered_map>
 #include <mutex>
-#include <httplib.h>
-#include <nlohmann/json.hpp>
+// #include <httplib.h>
+// #include <nlohmann/json.hpp>
 
+#include "../vcpkg-headers/httplib.h"
+#include "../vcpkg-headers/nlohmann/json.hpp"
 
 using RouteMap = std::unordered_map<std::string, std::string>;
 using UserRouteMap = std::unordered_map<std::string, RouteMap>;

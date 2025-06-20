@@ -9,13 +9,14 @@ include_directories(header)
 # add_subdirectory(nlohmann_json)
 include_directories("/app/vcpkg/installed/x64-linux/include")
 
-# find_package(httplib CONFIG REQUIRED)
-# find_package(spdlog CONFIG REQUIRED)
-# find_package(nlohmann_json CONFIG REQUIRED)
+find_package(httplib CONFIG REQUIRED)       # req for local
+find_package(spdlog CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+
 find_package(OpenSSL REQUIRED)
 # find_package(laserpants_dotenv REQUIRED)
 find_package(ixwebsocket REQUIRED)
-find_package(fmt CONFIG REQUIRED)
+# find_package(fmt CONFIG REQUIRED)         // not req for local
 find_package(ZLIB REQUIRED)
 
 
@@ -25,15 +26,16 @@ add_executable( deltax
                 src/server.cpp 
                 src/config.cpp 
                 src/router 
-                src/ws_client 
+                src/ws_client
                 src/rate_limiter.cpp)
 # add_executable(main src/main.cpp)
 
 # link_directories("/app/vcpkg/installed/x64-linux/lib")
 
-# target_link_libraries(deltax PRIVATE httplib::httplib)
+# target_link_libraries(deltax PRIVATE httplib::httplib)      # req for local
 # target_link_libraries(deltax PRIVATE spdlog::spdlog)
 # target_link_libraries(deltax PRIVATE nlohmann_json::nlohmann_json)
+
 # target_link_libraries(deltax PRIVATE OpenSSL::SSL OpenSSL::Crypto)
 # target_link_libraries(main laserpants::dotenv)
 # target_link_libraries(deltax PRIVATE ixwebsocket OpenSSL::SSL OpenSSL::Crypto)      # link issues 
@@ -42,7 +44,7 @@ target_link_libraries(deltax PRIVATE
     /app/vcpkg/installed/x64-linux/lib/libixwebsocket.a
     OpenSSL::SSL OpenSSL::Crypto
 )
-target_link_libraries(deltax PRIVATE fmt::fmt)
+# target_link_libraries(deltax PRIVATE fmt::fmt)
 
 target_link_libraries(deltax PRIVATE ZLIB::ZLIB)
 
@@ -60,3 +62,7 @@ target_link_libraries(deltax PRIVATE ZLIB::ZLIB)
 
 # enable_testing()
 # add_test(NAME deltax_tests COMMAND deltax_tests)
+
+
+
+# https://deltax-app.bravegrass-aeb359bf.eastus.azurecontainerapps.io/
