@@ -174,7 +174,7 @@ void Router::updateUserRoutes(const std::string& userId, const nlohmann::json& r
                         }
                         
                         if (sec.contains("ssl") && sec["ssl"].is_boolean()) {
-                            config.securitySsl = sec["ssl"].get<bool>();
+                            config.securityCors = sec["ssl"].get<bool>();
                         }
                         
                         if (sec.contains("ipWhitelist") && sec["ipWhitelist"].is_array()) {
