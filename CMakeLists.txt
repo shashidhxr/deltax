@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 
-link_directories(/usr/local/lib/)
+# link_directories(/usr/local/lib/)
+link_directories(/app/vcpkg/installed/x64-linux/lib)
 
 include_directories(header)
 # add_subdirectory(nlohmann_json)
@@ -20,7 +21,7 @@ find_package(ZLIB REQUIRED)
 
 
 # add_executable(deltax src/main.cpp src/server.cpp src/auth.cpp src/config.cpp)
-add_executable(deltax src/main.cpp src/server.cpp src/config.cpp src/router.cpp src/ws_client.cpp)
+add_executable(deltax src/main.cpp src/server.cpp src/config.cpp src/router.cpp src/ws_client.cpp src/rate_limiter.cpp)
 # add_executable(main src/main.cpp)
 
 target_link_libraries(deltax PRIVATE spdlog::spdlog)

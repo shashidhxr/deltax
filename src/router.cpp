@@ -77,6 +77,7 @@ void Router::setupRouteHandler(httplib::Server& svr) {
             spdlog::warn("HTTPS might not be fully supported");
         }
 
+
         size_t path_pos = target_url.find('/');
         if (path_pos != std::string::npos) {
             host = target_url.substr(0, path_pos);
@@ -96,7 +97,8 @@ void Router::setupRouteHandler(httplib::Server& svr) {
             spdlog::error("Failed to reach backend at {}{}", host, target_path);
             res.set_content("Failed to reach backend", "text/plain");
         }
-        
+        std::cout << target_path.c_str() << std::endl;
+        std::cout << backend_res << std::endl;
     }); 
 }
 
