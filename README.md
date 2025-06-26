@@ -2,6 +2,26 @@
 
 API gateway for workload-heavy tasks. Written in C++.
 
+
+### Instructions to run locally
+
+### 1. Build the Docker Image
+
+```bash
+docker build -t deltax:latest .
+
+mkdir -p $PWD/deltax-config
+cp ./config-volume/config.json $PWD/deltax-config/
+
+docker run -d \
+  -v $PWD/deltax-config:/app/config \
+  -p 9111:9111 \
+  --name deltax-runtime \
+  deltax:latest
+
+curl http://localhost:9111
+
+
 ### Features
 
 - Reverse Proxy
