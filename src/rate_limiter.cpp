@@ -18,6 +18,6 @@ bool RateLimiter::allow_req(const std::string& key) {
         return false;
     }
 
-    ++entry.count;
+    entry.count++;
     return true;
 }

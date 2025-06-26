@@ -12,7 +12,7 @@ bool ConfigManager::load(UserRouteMap& userRoutes) {
         std::ifstream file(config_file);
         if (file.is_open()) {
             nlohmann::json json;
-            file >> json;
+            file >> json;   
 
             userRoutes.clear();
             

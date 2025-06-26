@@ -4,7 +4,9 @@ RUN apt update && apt install -y cmake openssl libssl-dev
 
 WORKDIR /app
 
-COPY config.json .
+# COPY config.json .
+# COPY config.json ./config.template.json
+    
 COPY src/ ./src
 COPY header/ ./header
 COPY CMakeLists.txt .
