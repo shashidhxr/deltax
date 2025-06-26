@@ -24,7 +24,7 @@ curl http://localhost:9111
 
 ### Features
 
-- Reverse Proxy
+- Reverse Proxy 
 - Rate limiting  
 - Load balancing  
 - Auth
