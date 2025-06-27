@@ -1,14 +1,12 @@
-// server/WebSocketClient.h
 #pragma once
 
-#include "router.h"
 #include "config.h"
 
 #include <ixwebsocket/IXWebSocket.h>
 
 class WebSocketClient {
 public:
-    WebSocketClient(Router& router, ConfigManager& configManager);
+    WebSocketClient(ConfigManager& configManager); 
     void connect(const std::string& url);
 
 private:
@@ -17,6 +15,5 @@ private:
     // void processRouteDeletion(const)
 
     ix::WebSocket ws;
-    Router& router;
     ConfigManager& configManager;
 };
