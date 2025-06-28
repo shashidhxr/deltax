@@ -1,13 +1,13 @@
-// server/WebSocketClient.cpp
 #include "ws_client.h"
+
 #include <spdlog/spdlog.h>
 
-WebSocketClient::WebSocketClient(Router& router, ConfigManager& configManager)
-    : router(router), configManager(configManager) {}
+WebSocketClient::WebSocketClient(ConfigManager& configManager)
+    : configManager(configManager) {}
 
 
 void WebSocketClient::connect(const std::string& url) {
-    spdlog::info("Connecting to WS backend ({})", url);
+    spdlog::info("WSClient: Connecting to WS backend ({})", url);
     ws.setUrl(url);
 
     ws.setOnMessageCallback([this](const ix::WebSocketMessagePtr& msg) {
@@ -31,7 +31,7 @@ void WebSocketClient::connect(const std::string& url) {
 }
 
 void WebSocketClient::handleMessage(const std::string& msg) {
-    spdlog::info("Recieved message via WS: {}", msg);
+    spdlog::info("WSClient: Recieved message via WS: {}", msg);
     try {
         auto json = nlohmann::json::parse(msg);
 
@@ -41,7 +41,7 @@ void WebSocketClient::handleMessage(const std::string& msg) {
         }  
         // todo handle other message - delete route, update exisint route  
     } catch (const std::exception& e){
-        spdlog::error("Failed to process WS msg: {}", e.what());
+        spdlog::error("WSClient: Failed to process WS msg: {}", e.what());
     }
 }
 
@@ -61,8 +61,8 @@ void WebSocketClient::processRouteUpdate(const nlohmann::json& json) {
     }
 
     if(!routesObject.empty()) {
-        router.updateUserRoutes(userId, routesObject);
-        configManager.updateUserRoutes(userId, router.getUserRoutes(userId));
-        spdlog::info("Routes updated for {}", userId);
+        // router.updateUserRoutes(userId, routesObject);
+        configManager.updateUserRoutes(userId, routesObject);
+        spdlog::info("WSClient: Routes updated for {}", userId);
     }
 }

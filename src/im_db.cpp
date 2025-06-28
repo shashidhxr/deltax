@@ -2,9 +2,16 @@
 
 #include <spdlog/spdlog.h>
 
-void InMemoryDB::updateUserRoutes(std::string& user_id, const RouteMap& routes) {
-    userRoutes[user_id] = routes;           // bug - overwrites 
-    spdlog::info("IMDB: updated {} routes for user {}", routes.size(), user_id);
+void InMemoryDB::updateUserRoutes(const std::string& user_id, const RouteMap& routes) {
+    if(userRoutes.find(user_id) == userRoutes.end()) {
+        spdlog::info("IMDB: New user created {}, with {} routes", user_id, routes.size());
+    }
+    
+    RouteMap& existingRoutes = userRoutes[user_id];
+    for (const auto& [path, target] : routes) {
+        existingRoutes[path] = target;
+    }
+    spdlog::info("IMDB: merged {} routes for user {}", routes.size(), user_id);
 }
 
 RouteMap InMemoryDB::getUserRoutes(const std::string& user_id) {

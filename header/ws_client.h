@@ -3,6 +3,7 @@
 #include "config.h"
 
 #include <ixwebsocket/IXWebSocket.h>
+#include <nlohmann/json.hpp>
 
 class WebSocketClient {
 public:

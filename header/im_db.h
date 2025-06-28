@@ -16,6 +16,6 @@ public:
     InMemoryDB() = default;
 
     void updateUserRoutes(const std::string& user_id, const RouteMap& routes);
-    RouteMap getUserRoutes(const std::string& user_id);
+    RouteMap getUserRoutes(const std::string& user_id);     // maybe useless
     UserRouteMap getAllRoutes();
 };
