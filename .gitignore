@@ -10,3 +10,6 @@ ix_ws.txt
 
 docker-vcpkg
 vcpkg-headers
+
+
+/build

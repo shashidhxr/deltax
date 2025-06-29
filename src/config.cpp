@@ -16,9 +16,9 @@ void ConfigManager::updateUserRoutes(const std::string& user_id, const RouteMap&
 }
 
 RouteMap ConfigManager::getUserRoutes(const std::string& user_id) {
-    dbRef.getUserRoutes(user_id);
+    return dbRef.getUserRoutes(user_id);
 }       
 
 UserRouteMap ConfigManager::getAllRoutes() {
-    dbRef.getAllRoutes();
+    return dbRef.getAllRoutes();
 }

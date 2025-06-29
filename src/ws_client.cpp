@@ -28,7 +28,7 @@ void WebSocketClient::connect(const std::string& url) {
     });
 
     ws.start();
-}
+}   
 
 void WebSocketClient::handleMessage(const std::string& msg) {
     spdlog::info("WSClient: Recieved message via WS: {}", msg);
