@@ -1,20 +1,17 @@
-// server/ConfigManager.h
 #pragma once
 
-#include <string>
-#include <unordered_map>
-
-using RouteMap = std::unordered_map<std::string, std::string>;
-using UserRouteMap = std::unordered_map<std::string, RouteMap>;
+#include "im_db.h"
 
 class ConfigManager {
 private:
-    std::string config_file;
+    InMemoryDB& dbRef;
 
 public:
-    ConfigManager(const std::string& path);
+    ConfigManager(InMemoryDB& db);
+
+    void updateUserRoutes(const std::string& user_id, const RouteMap& routes);
+    RouteMap getUserRoutes(const std::string& user_id);
+    UserRouteMap getAllRoutes();
     
-    bool load(UserRouteMap& userRoutes);
-    void save(const UserRouteMap& userRoutes);    
-    void updateUserRoutes(const std::string& userId, const RouteMap& routes);
+    void loadInitConfig();          //  cold start
 };
