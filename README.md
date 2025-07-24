@@ -1,50 +1,86 @@
-# DeltaX
-
-API gateway for workload-heavy tasks. Written in C++.
 
 
-### Instructions to run locally
+# DeltaX - API Gateway
 
-### 1. Build the Docker Image
+  A performance-focused API Gateway built in C++ with full-stack management platform for real-time traffic control and observability.
+
+---
+
+<p align="center">
+  <img src="./assets/architecture.png" alt="DeltaX Architecture Diagram" width="700"/>
+</p>
+
+## ⚙️ Tech Stack
+
+**Backend:** C++, CMake, Node.js, Express, PostgreSQL  
+**Frontend:** React.js, Tailwindcss  
+**Infra & DevOps:** Docker, Azure (ACR, AFS), WebSockets, JWT
+
+---
+
+## 🧠 Overview
+
+DeltaX is a high-performance API Gateway designed for scalable, secure, and efficient request routing. It includes:
+
+- An HTTP server in C++ supporting:
+  - WebSocket connections
+  - Rate limiting
+  - Load balancing
+  - JWT-based authentication
+
+- A full-stack admin interface built with:
+  - **Node.js + Express** for backend APIs
+  - **React.js** for dashboard & management UI
+
+- Cloud-native deployment using:
+  - Docker
+  - Azure Container Registry (ACR)
+  - Azure File Share (AFS) for persistent config storage
+
+---
+
+
+
+## 🚀 Features
+
+- **Custom API Gateway** in C++ with HTTP & WebSocket support
+- **JWT-based Auth** for secure request routing
+- **Admin Dashboard** built with React.js
+- **Cloud Native**: Dockerized and deployed to Azure
+- **Rate Limiting & Load Balancing**
+- **Persistent Config Storage** using Azure File Share (AFS)
+
+---
+
+## 🧪 How to Run
+
+### 1. Clone the repo
 
 ```bash
-docker build -t deltax:latest .
+git clone https://github.com/shashidhxr/deltax.git
+cd deltax
 
-mkdir -p $PWD/deltax-config
-cp ./config-volume/config.json $PWD/deltax-config/
-
-docker run -d \
-  -v $PWD/deltax-config:/app/config \
-  -p 9111:9111 \
-  --name deltax-runtime \
-  deltax:latest
-
-curl http://localhost:9111
+mkdir build && cd build
+cmake ..
+make
+./deltax
 
 
-### Features
+# In backend/ (you have to run a backend which sends realtime updates in db via websocket on port 3000)
+npm install
+npm start
 
-- Reverse Proxy 
-- Rate limiting  
-- Load balancing  
-- Auth
-- API Keys Wallet
+# In frontend/
+npm install
+npm run dev
 
-### Stack
+Make sure your PostgreSQL instance is running and correctly configured.
+```
 
-- C++ core (actual gateway)
-- Node.js (Express)
-- PostgreSQL
-- React frontend
-- WebSockets for cross module comm
-- REST APIs
+## Future Plans
+- Add OAuth 2.0 and mTLS support
+- Prometheus-based metrics collection
+- Real-time analytics & request tracing
+- Multi-cloud deployment (AWS, GCP, Azure)
+- Replace WebSocket with gRPC streaming
 
-Still in development. Bugs expected. Breaking things to learn and improve.
-
-backend and db repo - https://github.com/shashidhxr/backend-deltax
-
-frontend repo - https://github.com/shashidhxr/web-deltax
-
-### Live
-
-[https://deltax0.vercel.app](https://deltax0.vercel.app)
