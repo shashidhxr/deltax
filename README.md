@@ -18,7 +18,7 @@
 
 ---
 
-## 🧠 Overview
+## Overview
 
 DeltaX is a high-performance API Gateway designed for scalable, secure, and efficient request routing. It includes:
 
@@ -41,7 +41,7 @@ DeltaX is a high-performance API Gateway designed for scalable, secure, and effi
 
 
 
-## 🚀 Features
+## Features
 
 - **Custom API Gateway** in C++ with HTTP & WebSocket support
 - **JWT-based Auth** for secure request routing
@@ -77,7 +77,7 @@ npm run dev
 Make sure your PostgreSQL instance is running and correctly configured.
 ```
 
-## Future Plans
+## Development Roadmap
 - Add OAuth 2.0 and mTLS support
 - Prometheus-based metrics collection
 - Real-time analytics & request tracing
