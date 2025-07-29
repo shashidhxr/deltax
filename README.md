@@ -52,7 +52,7 @@ DeltaX is a high-performance API Gateway designed for scalable, secure, and effi
 
 ---
 
-## 🧪 How to Run
+## How to Run
 
 ### 1. Clone the repo
 
