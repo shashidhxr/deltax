@@ -10,7 +10,7 @@
   <img src="./assets/architecture.png" alt="DeltaX Architecture Diagram" width="700"/>
 </p>
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 **Backend:** C++, CMake, Node.js, Express, PostgreSQL  
 **Frontend:** React.js, Tailwindcss  
